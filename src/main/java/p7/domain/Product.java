@@ -1,4 +1,4 @@
-package p6.domain;
+package p7.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class Product {
     private String beschrijving;
     private Double prijs;
 
-    @ManyToMany
+    @ManyToMany(cascade = { CascadeType.DETACH, CascadeType.REFRESH })
     @JoinTable(name = "ov_chipkaart_product",joinColumns = @JoinColumn(name = "product_nummer"),inverseJoinColumns = @JoinColumn( name = "kaart_nummer"))
     private List<OVChipkaart> ovchipkaartList;
 

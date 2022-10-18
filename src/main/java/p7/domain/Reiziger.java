@@ -1,4 +1,4 @@
-package p6.domain;
+package p7.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -17,11 +17,11 @@ public class Reiziger {
     private String achternaam;
     private Date geboortedatum;
 
-    @OneToOne(mappedBy = "reiziger")
+    @OneToOne(mappedBy = "reiziger", cascade = CascadeType.ALL)
     @JoinColumn(name = "adres_id")
     private Adres adres;
 
-    @OneToMany(mappedBy = "reiziger")
+    @OneToMany(mappedBy = "reiziger", cascade = CascadeType.ALL)
     private List<OVChipkaart> ovChipkaartList;
 
     public Reiziger(int id, String voorletters, String tussenvoegsel, String achternaam, Date geboortedatum) {

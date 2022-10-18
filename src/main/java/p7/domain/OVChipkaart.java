@@ -1,4 +1,4 @@
-package p6.domain;
+package p7.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -17,11 +17,11 @@ public class OVChipkaart {
     private int klasse;
     private double saldo;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reiziger_id")
     private Reiziger reiziger;
 
-    @ManyToMany(mappedBy = "ovchipkaartList")
+    @ManyToMany(mappedBy = "ovchipkaartList", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     private List<Product> productList;
 
     public OVChipkaart(int kaart_nummer, Date geldig_tot, int klasse, double saldo) {
