@@ -6,9 +6,6 @@ import java.util.List;
 
 @Entity
 public class Product {
-    @SequenceGenerator(name = "product_sequence",sequenceName = "product_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "product_sequence")
-
     @Id
     @Column(name = "product_nummer")
     private int id;

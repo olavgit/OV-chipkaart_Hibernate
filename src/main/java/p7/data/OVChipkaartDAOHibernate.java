@@ -38,7 +38,7 @@ public class OVChipkaartDAOHibernate implements OVChipkaartDAO {
     public boolean update(OVChipkaart ovChipkaart) {
         Transaction transaction = session.beginTransaction();
         try {
-            session.merge(ovChipkaart);
+            session.update(ovChipkaart);
             transaction.commit();
             return true;
         } catch (Exception e) {

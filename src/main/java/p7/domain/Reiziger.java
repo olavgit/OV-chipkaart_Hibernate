@@ -2,13 +2,11 @@ package p7.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Reiziger {
-    @SequenceGenerator(name = "reiziger_sequence",sequenceName = "reiziger_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "reiziger_sequence")
-
     @Id
     @Column(name = "reiziger_id")
     private int id;
@@ -17,12 +15,12 @@ public class Reiziger {
     private String achternaam;
     private Date geboortedatum;
 
-    @OneToOne(mappedBy = "reiziger", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "reiziger", orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "adres_id")
     private Adres adres;
 
-    @OneToMany(mappedBy = "reiziger", cascade = CascadeType.ALL)
-    private List<OVChipkaart> ovChipkaartList;
+    @OneToMany(mappedBy = "reiziger", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<OVChipkaart> ovChipkaartList = new ArrayList<>();
 
     public Reiziger(int id, String voorletters, String tussenvoegsel, String achternaam, Date geboortedatum) {
         this.id = id;

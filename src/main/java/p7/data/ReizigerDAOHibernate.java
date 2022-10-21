@@ -36,7 +36,7 @@ public class ReizigerDAOHibernate implements ReizigerDAO {
     public boolean update(Reiziger reiziger) {
         Transaction transaction = session.beginTransaction();
         try {
-            session.merge(reiziger);
+            session.update(reiziger);
             transaction.commit();
             return true;
         } catch (Exception e) {

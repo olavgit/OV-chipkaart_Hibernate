@@ -8,16 +8,13 @@ import java.util.List;
 @Entity
 @Table(name = "ov_chipkaart")
 public class OVChipkaart {
-    @SequenceGenerator(name = "ovchipkaart_sequence",sequenceName = "ovchipkaart_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "ovchipkaart_sequence")
-
     @Id
     private int kaart_nummer;
     private Date geldig_tot;
     private int klasse;
     private double saldo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "reiziger_id")
     private Reiziger reiziger;
 

@@ -2,6 +2,7 @@ package p7.domain;
 
 import javax.persistence.*;
 
+@Entity
 public class Adres {
     @Id
     @Column(name = "adres_id")
@@ -11,7 +12,7 @@ public class Adres {
     private String straat;
     private String woonplaats;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "reiziger_id")
     private Reiziger reiziger;
 
@@ -30,6 +31,10 @@ public class Adres {
         this.straat = straat;
         this.woonplaats = woonplaats;
         this.reiziger = reiziger;
+    }
+
+    public Adres() {
+
     }
 
     public int getId() {

@@ -39,7 +39,7 @@ public class AdresDAOHibernate implements AdresDAO {
     public boolean update(Adres adres) {
         Transaction transaction = session.beginTransaction();
         try {
-            session.merge(adres);
+            session.update(adres);
             transaction.commit();
             return true;
         } catch (Exception e) {
